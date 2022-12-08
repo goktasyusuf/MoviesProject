@@ -1,0 +1,37 @@
+﻿
+@using Core.Utilites.Results
+@using Entity.Concrete
+
+@model IDataResult<List<Writer>>
+
+    <div class="row">
+              <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Bilgileriniz</h4>
+                   
+                    
+                    <div class="d-flex mt-5 align-items-top">
+                        @foreach (var item in Model.Data)
+                        {
+                            @if (@item.WriterImage.Length<20)
+                            {
+                                                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCPL5gOwBGW9QIcnviek7QfFAzthMkc1CdhCdcoAy0_r5itGZU5u0tr1Ffigwm5XSkizQ&usqp=CAU" class="img-sm rounded-circle mr-3" alt="image">
+                            }
+                            else {
+                                <img src="@item.WriterImage" class="img-sm rounded-circle mr-3" alt="image">
+                            }
+                      
+                      <div class="mb-0 flex-grow">
+                        <h5 class="mr-2 mb-2">@item.WriterName - @item.WriterMail.</h5>
+                        <p class="mb-0 font-weight-light">@item.WriterAbout</p>
+                      </div>
+                    }
+                      <div class="ml-auto">
+                        <i class="mdi mdi-heart-outline text-muted"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>

@@ -1,0 +1,21 @@
+﻿@using Core.Utilites.Results
+@using Entity.Concrete
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@model IDataResult<List<Category>>
+
+<h1>Kategori index !!!</h1>
+
+
+@foreach (var item in Model.Data)
+{
+    <p>@item.CategoryStatus</p>
+
+    <p>@item.CategoryDescription</p>
+
+    <p>@item.CategoryName</p>
+    
+}

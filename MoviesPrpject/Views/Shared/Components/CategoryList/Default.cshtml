@@ -1,0 +1,31 @@
+﻿@using Core.Utilites.Results
+@using Entity.Concrete
+
+
+@model IDataResult<List<Category>>
+
+
+	<div class="row">
+
+
+
+
+	@foreach (var item in Model.Data)
+	{
+			<div class="col-6 col-sm-4 col-lg-6 ">
+			<div class="card">
+			<div class="card__cover">
+			<img src="@item.CategoryImage" style="width:175px;height:203px" alt="">
+			<a href="#" class="card__play">
+				<i class="icon ion-ios-play"></i>
+			</a>
+			</div>
+			<div class="card__content d-flex">
+				<h3 class="card__title"  style="margin:auto"><a style="color:white" href="#">@item.CategoryName</a></h3>
+			</div>
+		</div>
+			</div>
+	}
+
+
+</div>

@@ -1,0 +1,35 @@
+﻿
+
+<div class="col-12">
+
+<form class="form" action="/Comment/PartialAddComment/" method="post">
+
+				<input  type="text" name="CommentUserName" class="form__input" placeholder="İsminiz"/>
+				<input  name="CommentTitle" type="text" class="form__input" placeholder="Konu"/>
+				<textarea  name="CommentContent" class="form__textarea" placeholder="Yorum Ekle"></textarea>
+				<button type="submit" id="btn2" class="form__btn">Send</button>
+</form>
+</div>
+
+
+<script src="~/Theme2/js/jquery-3.3.1.min.js"></script>
+	<script src="~/Theme2/js/bootstrap.bundle.min.js"></script>
+	<script src="~/Theme2/js/owl.carousel.min.js"></script>
+	<script src="~/Theme2/js/jquery.mousewheel.min.js"></script>
+	<script src="~/Theme2/js/jquery.mCustomScrollbar.min.js"></script>
+	<script src="~/Theme2/js/wNumb.js"></script>
+	<script src="~/Theme2/js/nouislider.min.js"></script>
+	<script src="~/Theme2/js/plyr.min.js"></script>
+	<script src="~/Theme2/js/jquery.morelines.min.js"></script>
+	<script src="~/Theme2/js/photoswipe.min.js"></script>
+	<script src="~/Theme2/js/photoswipe-ui-default.min.js"></script>
+	<script src="~/Theme2/js/main.js"></script>
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.7.3/plyr.min.js" integrity="sha512-vfpVlxMY9ryJFidrwKK2Nus5vQ5vGilRCjImLBYj3uoAz75crnSKM7zC3jFcmtCI7u58d9Cp0mEZmWwidm9xsg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+			<script>
+				$('#btn2').click(function() {
+			swal("Yorum Başarıyla Eklendi.");
+		});
+			</script>

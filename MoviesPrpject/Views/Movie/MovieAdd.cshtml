@@ -1,0 +1,70 @@
+﻿
+@model Entity.Concrete.Movie
+
+
+@{
+    ViewData["Title"] = "BlogAdd";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+<h1>Film Ekle</h1>
+<br />
+
+@using (Html.BeginForm("MovieAdd", "Movie", FormMethod.Post)){
+
+    @Html.Label("Film İsmi")
+    @Html.TextBoxFor(x=>x.MovieName ,new{@class="form-control"})
+    @Html.ValidationMessageFor(x=>x.MovieName)
+
+    <br />
+
+    @Html.Label("Film Görsel URL")
+    @Html.TextBoxFor(x=>x.MovieImage ,new{@class="form-control"})
+    @Html.ValidationMessageFor(x=>x.MovieImage)
+
+        <br />
+
+    @Html.Label("Film Thumbnail URL")
+    @Html.TextBoxFor(x=>x.BlogThumbnailImage ,new{@class="form-control"})
+    @Html.ValidationMessageFor(x=>x.BlogThumbnailImage)
+
+        <br />
+
+    @Html.Label("Film Derecesi")
+    @Html.TextBoxFor(x=>x.MovieRate ,new{@class="form-control"})
+    @Html.ValidationMessageFor(x=>x.MovieRate)
+
+        <br />
+
+    @Html.Label("Film Kategorisi")
+    @Html.DropDownListFor(x=>x.CategoryId ,(List<SelectListItem>)ViewBag.cv , new{@class="form-control"})
+    @Html.ValidationMessageFor(x=>x.CategoryId)
+
+    <br />
+
+    @Html.Label("Film Çıkış Tarihi")
+    @Html.TextBoxFor(x=>x.ReleaseYear ,new{@class="form-control"})
+    @Html.ValidationMessageFor(x=>x.ReleaseYear)
+
+        <br />
+
+    @Html.Label("Film Süresi")
+    @Html.TextBoxFor(x=>x.RunnigTime ,new{@class="form-control"})
+    @Html.ValidationMessageFor(x=>x.RunnigTime)
+
+        <br />
+
+    @Html.Label("Film Ülkesi")
+    @Html.TextBoxFor(x=>x.MovieCountry ,new{@class="form-control"})
+    @Html.ValidationMessageFor(x=>x.MovieCountry)
+
+        <br />
+
+    @Html.Label("Film Hakkında")
+    @Html.TextAreaFor(x=>x.MovieContent,10,3 ,new{@class="form-control"})
+    @Html.ValidationMessageFor(x=>x.MovieContent)
+    <br />
+
+    <button class="btn btn-info" type="submit">Filmi Ekle</button>
+}
+

@@ -1,0 +1,51 @@
+﻿@using Core.Utilites.Results
+@using Entity.Concrete
+
+
+@model IDataResult<List<Movie>>
+
+
+
+<section class="section section--bg" data-bg="img/section/section.jpg">
+		<div class="container">
+			<div class="row">
+				<!-- section title -->
+				<div class="col-12">
+					<h2 class="section__title">Kullanıcının Yüklediği Diğer Filmler ...</h2>
+				</div>
+				<!-- end section title -->
+
+				@foreach (var item in Model.Data)
+			{
+				<!-- card -->
+				<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+					<div class="card">
+						<div class="card__cover">
+							@if(item.MovieImage.Length<15) {
+				<img src="https://media.istockphoto.com/id/1216251206/vector/no-image-available-icon.jpg?s=170667a&w=0&k=20&c=N-XIIeLlhUpm2ZO2uGls-pcVsZ2FTwTxZepwZe4DuE4=" alt="">
+							}
+							else {
+									<img src="@item.MovieImage" alt="">
+							}
+									<a href="/Movie/MovieDetails/@item.MovieId" class="card__play">
+								<i class="icon ion-ios-play"></i>
+							</a>
+						</div>
+						<div class="card__content">
+								<h3 class="card__title"><a href="/Movie/MovieDetails/@item.MovieId">@item.MovieName</a></h3>
+							<span class="card__category">
+								<a href="#">@item.MovieCountry -- </a>
+									<a href="#">@(((DateTime)item.MovieCreateDate).ToString("dd-MMM-yyyy"))</a>
+							</span>
+								<span class="card__rate"><i class="icon ion-ios-star"></i>@item.MovieRate</span>
+						</div>
+					</div>
+				</div>
+				<!-- end card -->
+				}
+
+				<!-- section btn -->
+				<!-- end section btn -->
+			</div>
+		</div>
+	</section>

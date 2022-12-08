@@ -1,0 +1,52 @@
+﻿@using Core.Utilites.Results
+
+@using Entity.Concrete
+
+@{
+    ViewData["Title"] = "MovieListByWriter";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+
+
+@model IDataResult<List<Movie>>
+
+    <h1>Yüklediğiniz Filmler</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Film İsmi </th>
+            <th>Oluşturulma Tarihi</th>
+            <th>Kategori</th>
+            <th>Durum</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Data)
+        {
+            <tr>
+                <td>@item.MovieId</td>
+                <td>@item.MovieName</td>
+                <td>@item.MovieCreateDate</td>
+                <td>@item.Category.CategoryName</td>
+                <td>
+                    @if(item.MovieStatus)
+                   {
+                               <span class="badge badge-success">Aktif</span>
+                   }
+                   else {
+                                <span class="badge badge-secondary">Pasif</span>
+                   }
+                </td>
+                <td><a href="/Movie/EditMovie/@item.MovieId" class="btn btn-danger">Düzenle</a></td>
+                <td><a href="/Movie/DeleteMovie/@item.MovieId" class="btn btn-warning">Sil</a></td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+<br />
+<a href="/Movie/MovieAdd" class="btn btn-primary">Yeni Film Ekle</a>
+

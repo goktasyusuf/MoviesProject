@@ -1,0 +1,413 @@
+﻿@using Core.Utilites.Results
+@using Entity.Concrete
+@model IDataResult<List<Movie>>
+@{
+    ViewData["Title"] = "MovieDetails";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+	<header>
+		<style>
+			.containercakma {
+	position: relative;
+	display: flex;
+	width: max-content;
+	height: max-content;
+	justify-content: center;
+	align-items: center;
+}
+.containercakma #video {
+	width: max-content;
+	border-radius: 20px;
+}
+.containercakma .controls {
+	position: absolute;
+	bottom: 40px;
+	width: 90%;
+	display: flex;
+	justify-content: space-around;
+	opacity: 0.2;
+	transition: opacity 0.4s;
+}
+.containercakma:hover .controls {
+	opacity: 1;
+}
+.containercakma .controls button {
+	background: transparent;
+	color: #fff;
+	font-weight: bolder;
+	text-shadow: 2px 1px 2px #000;
+	border: none;
+	cursor: pointer;
+}
+.containercakma .controls .timeline {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	border: none;
+	border-right: 3px solid #ccc;
+	border-left: 3px solid #ccc;
+}
+.containercakma .controls .timeline .bar{
+	background: rgb(1, 1, 65);
+	height: 4px;
+	flex: 1;
+}
+.containercakma .controls .timeline .bar .inner{
+	background: #ccc;
+	width: 0%;
+	height: 100%;
+}
+.fa {
+	font-size: 20px !important;
+}
+
+		</style>
+	</header>
+
+<body class="body">
+	
+	<!-- details -->
+	<section class="section details">
+		<!-- details background -->
+		<div class="details__bg" data-bg="~/Theme2/img/home/home__bg.jpg"></div>
+		<!-- end details background -->
+
+		<!-- details content -->
+		<div class="container">
+						<div class="row">
+			@foreach (var item in Model.Data)
+			{
+				<!-- title -->
+				<div class="col-12">
+					<h1 class="details__title">@item.MovieName</h1>
+				</div>
+				<!-- end title -->
+
+				<!-- content -->
+				<div class="col-10">
+					<div class="card card--details card--series">
+						<div class="row">
+							<!-- card cover -->
+							<div class="col-12 col-sm-4 col-md-4 col-lg-3 col-xl-3">
+								<div class="card__cover">
+									@if (item.MovieImage.Length<15)
+									{
+										<img src="https://media.istockphoto.com/id/1216251206/vector/no-image-available-icon.jpg?s=170667a&w=0&k=20&c=N-XIIeLlhUpm2ZO2uGls-pcVsZ2FTwTxZepwZe4DuE4=" alt="">
+									}
+									else {
+										<img src="@item.MovieImage" alt="">
+									}
+									
+								</div>
+							</div>
+							<!-- end card cover -->
+
+							<!-- card content -->
+							<div class="col-12 col-sm-8 col-md-8 col-lg-9 col-xl-9">
+								<div class="card__content">
+									<div class="card__wrap">
+										<span class="card__rate"><i class="icon ion-ios-star"></i>@item.MovieRate</span>
+
+										<ul class="card__list">
+											<li>HD</li>
+											<li>16+</li>
+										</ul>
+									</div>
+
+									<ul class="card__meta">
+										<li><span>Genre:</span>
+										<a href="#">@item.Category.CategoryName</a></li>
+										<li><span>Çıkış Tarihi:</span>@item.ReleaseYear</li>
+										<li><span>Süresi:</span>@item.RunnigTime</li>
+										<li><span>Ülke:</span> <a href="#">@item.MovieCountry</a> </li>
+									</ul>
+
+									<div class="card__description card__description--details">
+										@item.MovieContent
+									</div>
+								</div>
+							</div>
+							<!-- end card content -->
+						</div>
+					</div>
+				</div>
+
+
+
+			<div class="containercakma">
+				<video crossorigin="anonymous" onclick="play(event)" src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4" id="video"></video>
+			<div class="controls">
+				<button onclick="play(event)"><i style="margin-right:25px;" class="fa fa-play"></i><i style="margin-right:25px;" class="fa fa-pause"></i></button>
+				<button onclick="rewind(event)"><i style="margin-right:25px;" class="fa fa-fast-backward"></i></button>
+				<div class="timeline">
+					<div class="bar">
+						<div class="inner"></div>
+					</div>
+				</div>
+				<button onclick="forward(event)"><i style="margin-left:25px;" class="fa fa-fast-forward"></i></button>
+				<button onclick="fullScreen(event)"><i style="margin-left:25px;" class="fa fa-expand"></i></button>
+			</div>
+		</div>
+				<!-- end content -->
+				<div class="col-12">
+					<div class="details__wrap">
+						<!-- availables -->
+						<div class="details__devices">
+							<span class="details__devices-title">Available on devices:</span>
+							<ul class="details__devices-list">
+								<li><i class="icon ion-logo-apple"></i><span>IOS</span></li>
+								<li><i class="icon ion-logo-android"></i><span>Android</span></li>
+								<li><i class="icon ion-logo-windows"></i><span>Windows</span></li>
+								<li><i class="icon ion-md-tv"></i><span>Smart TV</span></li>
+							</ul>
+						</div>
+						<!-- end availables -->
+
+						<!-- share -->
+						<div class="details__share">
+							<span class="details__share-title">Share with friends:</span>
+
+							<ul class="details__share-list">
+								<li class="facebook"><a href="#"><i class="icon ion-logo-facebook"></i></a></li>
+								<li class="instagram"><a href="#"><i class="icon ion-logo-instagram"></i></a></li>
+								<li class="twitter"><a href="#"><i class="icon ion-logo-twitter"></i></a></li>
+								<li class="vk"><a href="#"><i class="icon ion-logo-vk"></i></a></li>
+							</ul>
+						</div>
+						<!-- end share -->
+					</div>
+				</div>
+			
+
+			}
+			</div>
+		</div>
+		<!-- end details content -->
+	</section>
+
+
+	@await Component.InvokeAsync("WriterLastMovie")
+
+	<!-- end details -->
+
+	
+
+	<!-- content -->
+	<section class="content">
+		<div class="content__head">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<!-- content title -->
+						<h2 class="content__title">Keşfet</h2>
+						<!-- end content title -->
+
+						<!-- content tabs nav -->
+						<ul class="nav nav-tabs content__tabs" id="content__tabs" role="tablist">
+							<li class="nav-item">
+								<a class="nav-link active" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">Yorumlar</a>
+							</li>
+						</ul>
+						<!-- end content tabs nav -->
+
+						<!-- content mobile tabs nav -->
+						<div class="content__mobile-tabs" id="content__mobile-tabs">
+							<div class="content__mobile-tabs-btn dropdown-toggle" role="navigation" id="mobile-tabs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<input type="button" value="Comments">
+								<span></span>
+							</div>
+
+							<div class="content__mobile-tabs-menu dropdown-menu" aria-labelledby="mobile-tabs">
+								<ul class="nav nav-tabs" role="tablist">
+									<li class="nav-item"><a class="nav-link active" id="1-tab" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">Comments</a></li>
+								</ul>
+							</div>
+						</div>
+						<!-- end content mobile tabs nav -->
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-lg-8 col-xl-8">
+					<!-- content tabs -->
+					<div class="tab-content" id="myTabContent">
+						<div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="1-tab">
+							<div class="row">
+								<!-- comments -->
+								@*@await Html.PartialAsync("~/Views/Comment/ListCommentsByMovie.cshtml")   hata veriyordu *@
+
+								@await Component.InvokeAsync("CommentListByMovie",new {id =ViewBag.id})
+
+								@await Html.PartialAsync("~/Views/Comment/PartialAddComment.cshtml")
+								<!-- end comments -->
+							</div>
+						</div>
+
+						<div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="2-tab">
+							<div class="row">
+							</div>
+						</div>
+
+						<div class="tab-pane fade" id="tab-3" role="tabpanel" aria-labelledby="3-tab">
+						</div>
+					</div>
+					<!-- end content tabs -->
+				</div>
+
+				<!-- sidebar -->
+				<div class="col-12 col-lg-4 col-xl-4">
+					<div class="row">
+						<!-- section title -->
+						<div class="col-12">
+							<h2 class="section__title section__title--sidebar">KATEGORİLER</h2>
+							
+						</div>
+						<!-- end section title -->
+
+						<!-- card -->
+						
+						@await Component.InvokeAsync("CategoryList")
+						<!-- end card -->
+					</div>
+				</div>
+				<!-- end sidebar -->
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<div class="row">
+				<!-- section title -->
+				<div class="col-12">
+					<h2 class="section__title section__title--no-margin">Partnerlerimiz</h2>
+				</div>
+				<!-- end section title -->
+
+				<!-- section text -->
+				<div class="col-12">
+					<p class="section__text section__text--last-with-margin">It is a long <b>established</b> fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using.</p>
+				</div>
+				<!-- end section text -->
+
+				<!-- partner -->
+				<div class="col-6 col-sm-4 col-md-3 col-lg-2">
+					<a href="#" class="partner">
+						<img src="~/Theme2/img/partners/themeforest-light-background.png" alt="" class="partner__img">
+					</a>
+				</div>
+				<!-- end partner -->
+
+				<!-- partner -->
+				<div class="col-6 col-sm-4 col-md-3 col-lg-2">
+					<a href="#" class="partner">
+						<img src="~/Theme2/img/partners/audiojungle-light-background.png" alt="" class="partner__img">
+					</a>
+				</div>
+				<!-- end partner -->
+
+				<!-- partner -->
+				<div class="col-6 col-sm-4 col-md-3 col-lg-2">
+					<a href="#" class="partner">
+						<img src="~/Theme2/img/partners/codecanyon-light-background.png" alt="" class="partner__img">
+					</a>
+				</div>
+				<!-- end partner -->
+
+				<!-- partner -->
+				<div class="col-6 col-sm-4 col-md-3 col-lg-2">
+					<a href="#" class="partner">
+						<img src="~/Theme2/img/partners/photodune-light-background.png" alt="" class="partner__img">
+					</a>
+				</div>
+				<!-- end partner -->
+
+				<!-- partner -->
+				<div class="col-6 col-sm-4 col-md-3 col-lg-2">
+					<a href="#" class="partner">
+						<img src="~/Theme2/img/partners/activeden-light-background.png" alt="" class="partner__img">
+					</a>
+				</div>
+				<!-- end partner -->
+
+				<!-- partner -->
+				<div class="col-6 col-sm-4 col-md-3 col-lg-2">
+					<a href="#" class="partner">
+						<img src="~/Theme2/img/partners/3docean-light-background.png" alt="" class="partner__img">
+					</a>
+				</div>
+				<!-- end partner -->
+			</div>
+		</div>
+	</section>
+	<!-- end content -->
+
+
+	
+</body>
+
+<script>
+	// Select the HTML5 video
+const video = document.querySelector("#video")
+// set the pause button to display:none by default
+document.querySelector(".fa-pause").style.display = "none"
+// update the progress bar
+video.addEventListener("timeupdate", () => {
+	let curr = (video.currentTime / video.duration) * 100
+	if(video.ended){
+		document.querySelector(".fa-play").style.display = "block"
+		document.querySelector(".fa-pause").style.display = "none"
+	}
+	document.querySelector('.inner').style.width = `${curr}%`
+})
+// pause or play the video
+const play = (e) => {
+	// Condition when to play a video
+	if(video.paused){
+		document.querySelector(".fa-play").style.display = "none"
+		document.querySelector(".fa-pause").style.display = "block"
+		video.play()
+	}
+	else{
+		document.querySelector(".fa-play").style.display = "block"
+		document.querySelector(".fa-pause").style.display = "none"
+		video.pause()
+	}
+}
+
+// trigger fullscreen
+const fullScreen = (e) => {
+	e.preventDefault()
+	video.requestFullscreen()
+}
+// download the video
+const download = (e) => {
+	e.preventDefault()
+	let a = document.createElement('a')
+	a.href = video.src 
+	a.target = "_blank"
+	a.download = ""
+	document.body.appendChild(a)
+	a.click()
+	document.body.removeChild(a)
+}
+// rewind the current time
+const rewind = (e) => {
+	video.currentTime = video.currentTime - ((video.duration/100) * 5)
+}
+// forward the current time
+const forward = (e) => {
+	video.currentTime = video.currentTime + ((video.duration/100) * 5)
+}
+</script>
+
+</html>

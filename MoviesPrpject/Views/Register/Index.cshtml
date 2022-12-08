@@ -1,0 +1,177 @@
+﻿
+@{
+	Layout = null;
+}
+
+
+@model Entity.Concrete.Writer
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+
+	<!-- Font -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600%7CUbuntu:300,400,500,700" rel="stylesheet">
+
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+	<!-- CSS -->
+
+
+	<link rel="stylesheet" href="~/Theme2/css/bootstrap-reboot.min.css">
+	<link rel="stylesheet" href="~/Theme2/css/bootstrap-grid.min.css">
+	<link rel="stylesheet" href="~/Theme2/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="~/Theme2/css/jquery.mCustomScrollbar.min.css">
+	<link rel="stylesheet" href="~/Theme2/css/nouislider.min.css">
+	<link rel="stylesheet" href="~/Theme2/css/ionicons.min.css">
+	<link rel="stylesheet" href="~/Theme2/css/plyr.css">
+	<link rel="stylesheet" href="~/Theme2/css/photoswipe.css">
+	<link rel="stylesheet" href="~/Theme2/css/default-skin.css">
+	<link rel="stylesheet" href="~/Theme2/css/main.css">
+
+		<!-- Favicons -->
+	<link rel="icon" type="image/png" href="~Theme2/icon/favicon-32x32.png" sizes="32x32">
+	<link rel="apple-touch-icon" href="~/Theme2/icon/favicon-32x32.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="~/Theme2/icon/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="~/Theme2/icon/apple-touch-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="~/Theme2/icon/apple-touch-icon-144x144.png">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Dmitry Volkov">
+	<title>FlixGo – Online Movies, TV Shows & Cinema HTML Template</title>
+
+	<style>
+		.text-white {
+			color:white;
+		}
+	</style>
+</head>
+<body class="body">
+	<div class="sign section--bg" data-bg="img/section/section.jpg">
+		<div class="container">
+
+			<div class="d-flex" style="flex-direction:column">
+
+			<a href="index.html" class="sign__logo" style="margin:auto;margin-top:5px">
+								<img src="~/Theme2/img/logo.svg"  alt="">
+							</a>
+							<br />
+							<h2 style="margin:auto" class="text-white">KAYIT OL</h2>
+							</div>
+			<div class="signin__content" style="margin-top:25px">
+						<div class="sign__form">
+							<p class="text-white"> KURALLAR</p>
+							<div>
+								<p class="text-white"> - İsminiz en az 2 karakter içermelidir ve boş olmamalıdır.</p>
+							<p class="text-white"> - E-Mailiniz doğru formatta olmalı ve boş olmamalıdır.</p>
+							<p class="text-white"> - Şifreniz en az 1 tane büyük karakter,küçük karakter ve özel sembol içermelidr.</p>
+							</div>
+
+						</div>
+					</div>
+			<div class="row">
+				<div class="col-12">
+					<div class="sign__content">
+						<!-- registration form -->
+						<div class="sign__form">
+							@using (Html.BeginForm("Index", "Register", FormMethod.Post))
+							{
+								<a href="index.html" class="sign__logo">
+									<img src="~/Theme2/img/logo.svg" alt="">
+								</a>
+
+								<div class="sign__group">
+									@*<input type="text" class="sign__input" placeholder="Name" name="WriterName">*@
+
+									@Html.TextBoxFor(x=>x.WriterName , new {placeholder="İsminiz",@class="sign__input"})
+										<br/>
+									@Html.ValidationMessageFor(x=>x.WriterName ,"", new {@class="text-white "})
+								</div>
+
+								<div class="sign__group">
+									@*<input type="email" class="sign__input" placeholder="Email" name="WriterMail">*@
+									@Html.TextBoxFor(x=>x.WriterMail, new {placeholder="E-Mailiniz",@class="sign__input"})
+										<br/>
+									@Html.ValidationMessageFor(x=>x.WriterMail,"", new {@class="text-white "})
+								</div>
+
+								<div class="sign__group">
+									@*<input type="text" class="sign__input" placeholder="Görsel Dosya Yolu" name="WriterImage">*@
+									@Html.TextBoxFor(x=>x.WriterImage, new {placeholder="Resminizin URL Yolu",@class="sign__input"})
+									<br/>
+									@Html.ValidationMessageFor(x=>x.WriterImage,"", new {@class="text-white "})
+								</div>
+
+								<div class="sign__group">
+									@*<input type="password" class="sign__input" placeholder="Password" name="WriterPassword">*@
+									@Html.TextBoxFor(x=>x.WriterPassword, new {placeholder="Şifreniz",@class="sign__input"})
+									<br/>
+									@Html.ValidationMessageFor(x=>x.WriterPassword,"", new {@class="text-white "})
+
+								</div>
+
+									<div class="sign__group">
+									@*<input type="password" class="sign__input" placeholder="Password" name="WriterPassword">*@
+									@Html.TextAreaFor(x=>x.WriterAbout,10,3, new {placeholder="Hakkınızda",@class="sign__input"})
+										<br/>
+									@Html.ValidationMessageFor(x=>x.WriterAbout,"", new {@class="text-white "})
+
+									</div>
+
+
+								<div class="sign__group sign__group--checkbox">
+									<input id="remember" name="remember" type="checkbox" checked="checked">
+									<label for="remember">I agree to the <a id="btn1" href="#">Gizlilik Politikası</a></label>
+								</div>
+
+
+								<button class="sign__btn" type="submit">Sign up</button>
+
+
+								<span class="sign__text">Zaten Bir Hesabın Var Mı ? <a href="/Login/Index">Giriş Yap!</a></span>
+							}
+
+						</div>
+						<!-- registration form -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- JS -->
+
+
+	<script src="~/Theme2/js/jquery-3.3.1.min.js"></script>
+	<script src="~/Theme2/js/bootstrap.bundle.min.js"></script>
+	<script src="~/Theme2/js/owl.carousel.min.js"></script>
+	<script src="~/Theme2/js/jquery.mousewheel.min.js"></script>
+	<script src="~/Theme2/js/jquery.mCustomScrollbar.min.js"></script>
+	<script src="~/Theme2/js/wNumb.js"></script>
+	<script src="~/Theme2/js/nouislider.min.js"></script>
+	<script src="~/Theme2/js/plyr.min.js"></script>
+	<script src="~/Theme2/js/jquery.morelines.min.js"></script>
+	<script src="~/Theme2/js/photoswipe.min.js"></script>
+	<script src="~/Theme2/js/photoswipe-ui-default.min.js"></script>
+	<script src="~/Theme2/js/main.js"></script>
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.7.3/plyr.min.js" integrity="sha512-vfpVlxMY9ryJFidrwKK2Nus5vQ5vGilRCjImLBYj3uoAz75crnSKM7zC3jFcmtCI7u58d9Cp0mEZmWwidm9xsg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+	<script>
+		$('#btn1').click(function() {
+			swal("Web sitemizi ilk kez ziyaret ettiğinizde, size çerezler hakkında bir açıklama içeren pencere göstereceğiz. “Çerez Aydınlatma Metni” Düğmesini tıkladığınızda, burada açıklandığı gibi, açılır pencerede seçtiğiniz çerezlerin ve eklentilerin kategorilerini inceleyebilirsiniz.  Çerez kullanımını tarayıcınız üzerinden devre dışı bırakabilirsiniz, ancak web sitemizin çalışması için gerekli zorunlu çerezler etkili olmaya devam edecektir. Eğer bunu da istemiyorsanız siteyi ziyareti sonlandırmalısınız. ");
+		});
+	</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+﻿@using Core.Utilites.Results
+
+@using Entity.Concrete
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+@model IDataResult<List<Movie>>
+
+<section class="home">
+		<div class="container">
+			<h1 class="home__title text-center m-auto"><b>SEZONUN</b> YENİ FİLMLERİ</h1>
+			<br />
+				<div class="row">
+						@foreach (var item in Model.Data)
+						{
+									<div class="card col-lg-4" style="margin-bottom:100px">
+									<div class="card__cover">
+										@if (item.MovieImage.Length<15)
+										{
+																	<img src="https://media.istockphoto.com/id/1216251206/vector/no-image-available-icon.jpg?s=170667a&w=0&k=20&c=N-XIIeLlhUpm2ZO2uGls-pcVsZ2FTwTxZepwZe4DuE4=" alt="">
+										}
+										else {
+											<img src="@item.MovieImage" alt="">
+										}
+											
+										<a href="#" class="card__play">
+											<i class="icon ion-ios-play"></i>
+										</a>
+									</div>
+									<div class="card__content">
+										<h3 class="card__title"><a href="#">@item.MovieName</a></h3>
+										<div class="d-flex justify-content-between">
+												<a href="#" style="color:#ff55a5">@item.Category.CategoryName</a>
+											<span class="card__rate"><i class="icon ion-ios-star"></i>@item.MovieRate</span>
+										</div>
+										<br/>
+											<div>
+											<p style="color:white;text-align:justify">@item.MovieContent.Substring(0,20)...</p>
+											</div>
+											<div>
+													<a href="/Movie/MovieDetails/@item.MovieId" class="header__sign-in" style="margin:auto;color:white">Devamını Oku </a>
+											</div>
+												<br/>
+												<div class="d-flex">
+												<span style="color:white;margin:auto;"> <i style="color:#ff55a5" class="fa-regular fa-calendar"></i>   @(((DateTime)item.MovieCreateDate).ToString("dd-MMM-yyyy"))</span>
+													</div>
+									</div>
+								</div>
+						}
+				</div>
+
+				<div class="row">
+					@await Html.PartialAsync("~/Views/Shared/OurPartnersHalf.cshtml")
+					<div class="col-6" style="margin: auto;padding: 50px;">
+						<div class="x" style="display:flex;">
+					@await Html.PartialAsync("~/Views/NewsLetter/SubscribeMail.cshtml")
+				</div>
+					</div>
+				</div>
+
+				
+
+		</div>
+	</section>
+

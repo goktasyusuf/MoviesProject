@@ -11,3 +11,21 @@ A small project connected to a database and developed with Asp.Net Core
 5. Start project from 'MoviesProject' and register to site.
 6. After registering, you can log in and use the site.
 
+# Some Screenshots
+
+<img src="https://github.com/goktasyusuf/MoviesProject/blob/main/MoviesPrpject/wwwroot/Theme2/img/gallery/1.PNG " width="900"/>
+
+<img src="https://github.com/goktasyusuf/MoviesProject/blob/main/MoviesPrpject/wwwroot/Theme2/img/gallery/3.PNG" width="900"/>
+
+<img src="https://github.com/goktasyusuf/MoviesProject/blob/main/MoviesPrpject/wwwroot/Theme2/img/gallery/4.PNG " width="900"/>
+
+<img src="https://github.com/goktasyusuf/MoviesProject/blob/main/MoviesPrpject/wwwroot/Theme2/img/gallery/5.PNG " width="900"/>
+
+<img src="https://github.com/goktasyusuf/MoviesProject/blob/main/MoviesPrpject/wwwroot/Theme2/img/gallery/6.PNG " width="900"/>
+
+<img src="https://github.com/goktasyusuf/MoviesProject/blob/main/MoviesPrpject/wwwroot/Theme2/img/gallery/7.PNG " width="900"/>
+
+<img src="https://github.com/goktasyusuf/MoviesProject/blob/main/MoviesPrpject/wwwroot/Theme2/img/gallery/8.PNG " width="900"/>
+
+<img src="https://github.com/goktasyusuf/MoviesProject/blob/main/MoviesPrpject/wwwroot/Theme2/img/gallery/9.PNG " width="900"/>
+
